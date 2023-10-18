@@ -1,58 +1,58 @@
-import React, { CSSProperties, ReactNode } from "react";
-import { Form, InputGroup } from "react-bootstrap";
-import { TextInputStyle } from "./style.ts";
+import {   useState } from "react";
+import {   InputGroup } from "react-bootstrap";
+import { StyledInputGroupText, StyledTextInput } from "./StyledTextInput.ts";
+import { TextInputProps, Variation } from "./@types/index.ts";
 
-interface TextInputProps {
-  overrideIconContainerStyle?: CSSProperties;
-  overrideInputStyle?: CSSProperties;
-  startIcon?: ReactNode;
-  endIcon?: ReactNode;
-}
 
-const getCorrectStyling = (leftIcon, rightIcon) => {
-  switch ((leftIcon, rightIcon)) {
-    case leftIcon && rightIcon:
-      return TextInputStyle.inputWithBothIcons;
-      break;
-    case leftIcon:
-      return TextInputStyle.inputWithStartIcon;
-    case rightIcon:
-      return TextInputStyle.inputWithEndIcon;
-    default:
-      break;
+
+
+
+const TextInput = ({ startIcon, endIcon,  }: TextInputProps) => {
+
+  const [inputValue, setInputValue] = useState('') 
+  const handlePressEnter = (event: React.KeyboardEvent) => {
+    if (event.key === 'Enter') {
+      search(inputValue)
+    }
+  };
+
+  const search = (value: string) => {
+    console.log(value)
+    // await search function etc
+    // navigate to results page
   }
-};
 
-const TextInput = ({ startIcon, endIcon }: TextInputProps) => {
+  const handleClear = () => {
+    setInputValue('')
+    console.log(inputValue)
+    console.log('delete')
+  }
   return (
-    <InputGroup>
+    <InputGroup
+    >
       {startIcon && (
-        <InputGroup.Text
-          style={{
-            ...TextInputStyle.basicStyle,
-            ...TextInputStyle.iconPosition.left,
-          }}
-          id="basic-addon1"
-        >
-          {startIcon}
-        </InputGroup.Text>
+         <StyledInputGroupText onClick={() => search(inputValue)} variation={Variation.left}>
+         {startIcon}
+   </StyledInputGroupText>
+      
       )}
 
-      <Form.Control
-        style={getCorrectStyling(startIcon, endIcon)}
+
+
+      <StyledTextInput
+      onChange={(e) => setInputValue(e.target.value)}
+        value={inputValue}
+        onKeyDown={handlePressEnter}
+        $leftIcon={Boolean(startIcon)}
+        $rightIcon={Boolean(endIcon)}
         aria-label="Username"
         aria-describedby="basic-addon1"
       />
       {endIcon && (
-        <InputGroup.Text
-          style={{
-            ...TextInputStyle.basicStyle,
-            ...TextInputStyle.iconPosition.right,
-          }}
-          id="basic-addon1"
-        >
-          {endIcon}
-        </InputGroup.Text>
+        <StyledInputGroupText onClick={handleClear} variation={Variation.right}>
+              {endIcon}
+        </StyledInputGroupText>
+        
       )}
     </InputGroup>
   );
