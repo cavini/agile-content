@@ -5,7 +5,9 @@ export enum Variation {
   right = "right",
 }
 
-export interface TextInputProps {
+export interface SearchFieldProps {
   startIcon?: ReactNode;
   endIcon?: ReactNode;
+  externalSearchInput?: boolean;
+  getReturnValue?: (value: string) => void;
 }

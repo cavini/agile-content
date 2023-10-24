@@ -1,8 +1,9 @@
+import { useLocation } from "react-router-dom";
+import ResultsList from "../../components/resultsList/ResultsList";
 
 const Search = () => {
-  return (
-    <div>Search</div>
-  )
-}
+  const location = useLocation();
+  return <ResultsList variation={"link"} data={location.state.results} />;
+};
 
-export default Search
+export default Search;

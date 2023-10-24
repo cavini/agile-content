@@ -1,16 +1,15 @@
 import { Container } from "react-bootstrap";
-import { Outlet } from "react-router-dom";
+import { Outlet, useLocation } from "react-router-dom";
 import NavigationBar from "../navigationbar/NavigationBar";
 
 const Layout = () => {
+  const location = useLocation();
   return (
     <>
-      {/* header goes here */}
-      <NavigationBar />
+      <NavigationBar currentPage={location.pathname} />
       <Container>
         <Outlet />
       </Container>
-      {/* footer goes here */}
     </>
   );
 };

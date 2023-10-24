@@ -1,6 +1,6 @@
 import { CSSProperties } from "styled-components";
 
-export interface ImageContainerProps {
+export interface LogoContainerProps {
   styles?: CSSProperties;
   source: string;
   width: number;
