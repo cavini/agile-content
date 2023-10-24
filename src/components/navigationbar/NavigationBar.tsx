@@ -31,7 +31,7 @@ const NavigationBar = ({ currentPage }: NavigationBarProps) => {
         ) : (
           <LogoContainer
             width={dynamicWidth}
-            source="src/assets/images/googlelogo.png"
+            source="/assets/images/googlelogo.png"
           />
         )}
       </Navbar.Brand>
@@ -48,7 +48,7 @@ const NavigationBar = ({ currentPage }: NavigationBarProps) => {
         <Grid3x3GapFill style={cursorPointerStyle} />
         <LogoContainer
           width={30}
-          source="src/assets/images/userimage.jpeg"
+          source="/assets/images/userimage.jpeg"
           styles={imageStyles}
         />
       </Col>
