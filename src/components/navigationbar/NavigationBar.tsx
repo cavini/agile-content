@@ -26,17 +26,17 @@ const NavigationBar = ({ currentPage }: NavigationBarProps) => {
   return (
     <StyledNavigationBar>
       <Navbar.Brand href="/home">
-        {currentPage === "/home" ? (
+        {currentPage !== "/search" ? (
           <p style={{ fontSize: "" }}>Agile Content Frontend Test</p>
         ) : (
           <LogoContainer
             width={dynamicWidth}
-            source="src/assets/images/googlelogo.png"
+            source="/assets/images/googlelogo.png"
           />
         )}
       </Navbar.Brand>
       <Col xl={5} sm={8} xs={6} md={5}>
-        {currentPage !== "/home" && (
+        {currentPage === "/search" && (
           <SearchField
             startIcon={<Search />}
             endIcon={<X height={20} width={20} />}
@@ -48,7 +48,7 @@ const NavigationBar = ({ currentPage }: NavigationBarProps) => {
         <Grid3x3GapFill style={cursorPointerStyle} />
         <LogoContainer
           width={30}
-          source="src/assets/images/userimage.jpeg"
+          source="/assets/images/userimage.jpeg"
           styles={imageStyles}
         />
       </Col>
