@@ -22,7 +22,7 @@ const Home = () => {
         <Col className="text-center">
           <LogoContainer
             width={dynamicWidth}
-            source="src/assets/images/googlelogo.png"
+            source="/assets/images/googlelogo.png"
           />{" "}
           <SearchField
             getReturnValue={(value: string) => setReturnedValue(value)}
