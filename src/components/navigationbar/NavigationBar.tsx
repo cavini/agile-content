@@ -26,7 +26,7 @@ const NavigationBar = ({ currentPage }: NavigationBarProps) => {
   return (
     <StyledNavigationBar>
       <Navbar.Brand href="/home">
-        {currentPage === "/home" ? (
+        {currentPage !== "/search" ? (
           <p style={{ fontSize: "" }}>Agile Content Frontend Test</p>
         ) : (
           <LogoContainer
@@ -36,7 +36,7 @@ const NavigationBar = ({ currentPage }: NavigationBarProps) => {
         )}
       </Navbar.Brand>
       <Col xl={5} sm={8} xs={6} md={5}>
-        {currentPage !== "/home" && (
+        {currentPage === "/search" && (
           <SearchField
             startIcon={<Search />}
             endIcon={<X height={20} width={20} />}

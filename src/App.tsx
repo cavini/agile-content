@@ -2,15 +2,15 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import "./App.css";
 import Layout from "./components/layout/layout";
 import Home from "./pages/home/Home";
-import Search from "./pages/search/Search";
+import SearchPage from "./pages/search/SearchPage";
 
 function App() {
   return (
     <BrowserRouter>
       <Routes>
         <Route element={<Layout />}>
-          <Route index path="/home" element={<Home />} />
-          <Route index path="/search" element={<Search />} />
+          <Route path="/*" element={<Home />} />
+          <Route  path="/search" element={<SearchPage />} />
         </Route>
       </Routes>
     </BrowserRouter>
